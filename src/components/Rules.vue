@@ -1,21 +1,26 @@
 <template>
   <ul>
-    <li :data-test-rule="rule" :key="rule" v-for="(label, rule) in rulesLabels">{{label}}</li>
+    <li
+      v-for="(label, rule) in rulesLabels"
+      :data-test-rule="rule"
+      :key="rule"
+      :class="{ 'is-satisfied': rules[rule] }"
+    >
+      {{label}}
+    </li>
   </ul>
 </template>
 <script>
-
-export const RULE = {
-  OneLetter: 'OneLetter',
-  UpperAndLower: 'UpperAndLower',
-  OneNumber: 'OneNumber',
-  SpecialSymbol: 'SpecialSymbol',
-  LongerThan4: 'LongerThan4',
-  LongerThan8: 'LongerThan8',
-  LongerThan12: 'LongerThan12',
-};
+import RULE from '../common/constants/rules';
 
 export default {
+  props: {
+    rules: {
+      type: Object,
+      required: true,
+    },
+  },
+
   computed: {
     rulesLabels() {
       return {
@@ -31,3 +36,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .is-satisfied {
+    background-color: green;
+  }
+</style>

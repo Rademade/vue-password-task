@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import { mount } from '@vue/test-utils';
 import PasswordCheck from '../../../src/views/PasswordCheck.vue';
+import RULE from '../../../src/common/constants/rules';
 
 describe('PasswordCheck', () => {
   let wrapper;
@@ -13,6 +14,8 @@ describe('PasswordCheck', () => {
     wrapper.get('[data-test="password-field"]').setValue(password);
     await Vue.nextTick();
   };
+
+  const returnSatisfied = (attrValue) => wrapper.get(`[data-test-rule="${attrValue}"]`).classes('is-satisfied');
 
   beforeEach(() => {
     mountComponent();
@@ -38,8 +41,12 @@ describe('PasswordCheck', () => {
         await setPasswordTo('a');
       });
 
-      it.todo('should highlight one letter is satisfied');
-      it.todo('should not highlight number satisfied');
+      it('should highlight one letter is satisfied', () => {
+        expect(returnSatisfied(RULE.OneLetter)).toBe(true);
+      });
+      it('should not highlight number satisfied', () => {
+        expect(returnSatisfied(RULE.OneNumber)).toBe(false);
+      });
     });
 
     describe('when password has lower an upper letters', () => {
@@ -47,9 +54,15 @@ describe('PasswordCheck', () => {
         await setPasswordTo('aB');
       });
 
-      it.todo('should highlight one letter is satisfied');
-      it.todo('should highlight upper and lower letter is satisfied');
-      it.todo('should not highlight number satisfied');
+      it('should highlight one letter is satisfied', () => {
+        expect(returnSatisfied(RULE.OneLetter)).toBe(true);
+      });
+      it('should highlight upper and lower letter is satisfied', () => {
+        expect(returnSatisfied(RULE.UpperAndLower)).toBe(true);
+      });
+      it('should not highlight number satisfied', () => {
+        expect(returnSatisfied(RULE.OneNumber)).toBe(false);
+      });
     });
   });
 

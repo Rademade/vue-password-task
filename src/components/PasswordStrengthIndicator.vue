@@ -1,6 +1,16 @@
 <template>
-  <span>Weak or strong?</span>
+  <span>
+    <template v-if="isStrong">Strong</template>
+    <template v-else>Weak</template>
+  </span>
 </template>
 <script>
-export default {};
+export default {
+  props: {
+    isStrong: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
 </script>
