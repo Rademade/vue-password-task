@@ -28,7 +28,6 @@ export default function (password) {
   // Check if password has at least one letter
   if (passwordAsArray.some((el) => el.match(/^[a-zA-Z]+$/))) {
     passedRules = [...passedRules, 'OneLetter'];
-    // console.log('here is letter');
   }
 
   // Check if password has at least one lower and one upper case letter
