@@ -1,10 +1,17 @@
 <template>
-  <ul>
-    <li :data-test-rule="rule" :key="rule" v-for="(label, rule) in rulesLabels">{{label}}</li>
+  <ul class="q">
+    <li
+      :data-test-rule="rule"
+      :key="rule"
+      :class="{ 'passed-rule': isPassedRule(rule) }"
+      v-for="(label, rule) in rulesLabels"
+    >
+      {{ label }}
+    </li>
   </ul>
 </template>
-<script>
 
+<script>
 export const RULE = {
   OneLetter: 'OneLetter',
   UpperAndLower: 'UpperAndLower',
@@ -16,11 +23,18 @@ export const RULE = {
 };
 
 export default {
+  props: {
+    passedRules: {
+      type: Array,
+      default: () => [],
+    },
+  },
   computed: {
     rulesLabels() {
       return {
         [RULE.OneLetter]: 'Has at least one letter',
-        [RULE.UpperAndLower]: 'Has at least one lower and one upper case letter',
+        [RULE.UpperAndLower]:
+          'Has at least one lower and one upper case letter',
         [RULE.OneNumber]: 'Has at least one number',
         [RULE.SpecialSymbol]: 'Has at least one special character',
         [RULE.LongerThan4]: 'Has length > 4',
@@ -29,5 +43,16 @@ export default {
       };
     },
   },
+  methods: {
+    isPassedRule(rule) {
+      return this.passedRules.includes(rule);
+    },
+  },
 };
 </script>
+
+<style>
+.passed-rule {
+  text-decoration: line-through;
+}
+</style>
