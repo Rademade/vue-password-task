@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="password-check">
     <PasswordInput/>
     <Rules />
-    <PasswordStrengthIndicator data-test="password-strength"/>
+    <PasswordStrengthIndicator/>
   </div>
 </template>
 <script>
@@ -18,5 +18,12 @@ export default {
   },
 };
 </script>
-<style>
+<style lang="scss" scoped>
+  @import "../assets/scss/all";
+
+  .password-check {
+    max-width: 360px;
+    padding: 0 $x2-and-a-half;
+    margin: $x-3 auto;
+  }
 </style>
