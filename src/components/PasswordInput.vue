@@ -1,7 +1,20 @@
 <template>
-  <input data-test="password-field">
+  <input
+    class="form-l__input"
+    type="password"
+    data-test="password-field"
+    @input="setPassword($event)"
+  >
+
 </template>
 <script>
-export default {};
+  export default {
+    methods: {
+      setPassword(event) {
+        let {value} = event.target;
+        this.$emit('setPassword', value)
+      }
+    }
+  };
 </script>
 <style></style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PasswordInput/>
+    <PasswordInput @setPassword="setPassword"/>
     <Rules />
     <PasswordStrengthIndicator data-test="password-strength"/>
   </div>
@@ -11,10 +11,20 @@ import PasswordStrengthIndicator from '../components/PasswordStrengthIndicator.v
 import Rules from '../components/Rules.vue';
 
 export default {
+  data() {
+      return {
+        password: ''
+      }
+  },
   components: {
     Rules,
     PasswordInput,
     PasswordStrengthIndicator,
+  },
+  methods: {
+    setPassword(password) {
+      this.password = password;
+    }
   },
 };
 </script>
