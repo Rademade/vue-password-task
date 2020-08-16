@@ -17,10 +17,15 @@
     cursor: pointer
     opacity: 1
     transition: opacity .3s ease
+    position: relative
+    &:hover
+      opacity: 0.88
+    &:active
+      top: 1px
     &:disabled
       opacity: 0.88
-      cursor: none
+      cursor: default
   &__row
     position: relative
     &:not(:first-child)
-      margin-top: 10px
+      margin-top: 20px

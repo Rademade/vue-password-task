@@ -61,7 +61,7 @@ export default {
     validationStrengthIndicator() {
       if(!this.password) return
       let validationCount = Object.values(this.validationRules).filter(Boolean).length;
-      return validationCount > 4 ? "strong" : "weak";
+      return validationCount > 4 ? "Strong" : "Weak";
     },
     validationFormSubmit() {
       return !Object.values(this.validationRules).every(rule => rule)
