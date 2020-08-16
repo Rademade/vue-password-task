@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="form-l">
     <PasswordInput @setPassword="setPassword"/>
-    <Rules />
+    <Rules :validationRules="validationRules"/>
     <PasswordStrengthIndicator data-test="password-strength"/>
   </div>
 </template>
@@ -35,7 +35,27 @@ export default {
       this.password = password;
     }
   },
+  computed: {
+    validationRules () {
+      return this.validation.reduce((result, item) => {
+        result[item.label] = item.validate(this.password);
+        return result;
+      }, {});
+    },
+  },
 };
 </script>
-<style>
+<style lang="sass" scoped>
+  .form-l
+    max-width: 320px
+    border-radius: 10px
+    box-shadow: 0 0 5px rgba(107,119,140,.4)
+    width: 100%
+    margin: 0 auto
+    background: linear-gradient(#553096, #40266D)
+    color: white
+    font-family: Arial, Helvetica, sans-serif
+    padding: 15px 0
+
+
 </style>
