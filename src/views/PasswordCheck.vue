@@ -1,7 +1,7 @@
 <template>
   <div class="form-l">
-    <PasswordInput @setPassword="setPassword"/>
     <Rules :validationRules="validationRules"/>
+    <PasswordInput @setPassword="setPassword"/>
     <PasswordStrengthIndicator data-test="password-strength"/>
   </div>
 </template>
@@ -56,6 +56,10 @@ export default {
     color: white
     font-family: Arial, Helvetica, sans-serif
     padding: 15px 0
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
 
 
 </style>

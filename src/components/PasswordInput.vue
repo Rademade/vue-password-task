@@ -17,4 +17,13 @@
     }
   };
 </script>
-<style></style>
+<style lang="sass" scoped>
+  .form-l
+    &__input
+      width: 220px
+      outline: none
+      border: none
+      padding: 8px 10px 10px
+      border-radius: 5px
+      font-size: 20px
+</style>

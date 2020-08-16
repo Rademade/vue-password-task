@@ -72,9 +72,8 @@ export default {
     &__header
       text-align: center
       color: white
-      margin-bottom: 10px
     &__list
-      margin: 0
+      margin: 15px 0
       padding: 10px 15px
       list-style-type: none
       background-color: white
