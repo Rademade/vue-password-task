@@ -5,7 +5,7 @@
     <form class="form-l" @submit.prevent="formSubmitHandler">
       <div class="form-l__row">
         <PasswordInput @setPassword="setPassword"/>
-        <PasswordStrengthIndicator :indicator="validationStrengthIndicator" data-test="password-strength"/>
+        <PasswordStrengthIndicator :password="password" :indicator="validationStrengthIndicator" data-test="password-strength"/>
       </div>
       <div class="form-l__row">
         <button class="form-l__button"
@@ -59,13 +59,12 @@ export default {
       }, {});
     },
     validationStrengthIndicator() {
-      if(!this.password) return
       let validationCount = Object.values(this.validationRules).filter(Boolean).length;
       return validationCount > 4 ? "Strong" : "Weak";
     },
     validationFormSubmit() {
       return !Object.values(this.validationRules).every(rule => rule)
-    }
+    },
   },
 };
 </script>
