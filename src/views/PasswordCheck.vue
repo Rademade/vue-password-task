@@ -2,7 +2,7 @@
   <div class="form-l">
     <Rules :validationRules="validationRules"/>
     <PasswordInput @setPassword="setPassword"/>
-    <PasswordStrengthIndicator data-test="password-strength"/>
+    <PasswordStrengthIndicator :indicator="validationStrengthIndicator" data-test="password-strength"/>
   </div>
 </template>
 <script>
@@ -41,6 +41,11 @@ export default {
         result[item.label] = item.validate(this.password);
         return result;
       }, {});
+    },
+    validationStrengthIndicator() {
+      if(!this.password) return
+      let validationCount = Object.values(this.validationRules).filter(Boolean).length;
+      return validationCount > 4 ? "strong" : "weak";
     },
   },
 };

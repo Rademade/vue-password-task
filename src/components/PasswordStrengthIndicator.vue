@@ -1,6 +1,12 @@
 <template>
-  <span>Weak or strong?</span>
+  <span>{{indicator}}</span>
 </template>
 <script>
-export default {};
+export default {
+    props: {
+      indicator: {
+          type: String
+      }
+    }
+};
 </script>
