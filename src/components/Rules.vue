@@ -66,7 +66,6 @@ export default {
   .rules
     color: #2A1E49
     position: relative
-    max-width: 300px
     width: 100%
     margin: 0 auto
     &__header

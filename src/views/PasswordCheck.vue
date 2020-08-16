@@ -52,7 +52,7 @@ export default {
 </script>
 <style lang="sass" scoped>
   .form-l
-    max-width: 320px
+    max-width: 300px
     border-radius: 10px
     box-shadow: 0 0 5px rgba(107,119,140,.4)
     width: 100%
@@ -60,7 +60,7 @@ export default {
     background: linear-gradient(#553096, #40266D)
     color: white
     font-family: Arial, Helvetica, sans-serif
-    padding: 15px 0
+    padding: 15px 10px
     display: flex
     flex-direction: column
     justify-content: center
