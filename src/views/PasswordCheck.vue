@@ -1,8 +1,21 @@
 <template>
-  <div class="form-l">
+  <div class="form">
     <Rules :validationRules="validationRules"/>
-    <PasswordInput @setPassword="setPassword"/>
-    <PasswordStrengthIndicator :indicator="validationStrengthIndicator" data-test="password-strength"/>
+
+    <form class="form-l" @submit.prevent="formSubmitHandler">
+      <div class="form-l__row">
+        <PasswordInput @setPassword="setPassword"/>
+        <PasswordStrengthIndicator :indicator="validationStrengthIndicator" data-test="password-strength"/>
+      </div>
+      <div class="form-l__row">
+        <button class="form-l__button"
+                :disabled="validationFormSubmit"
+                type="submit">
+          Save
+        </button>
+      </div>
+    </form>
+
   </div>
 </template>
 <script>
@@ -33,6 +46,9 @@ export default {
   methods: {
     setPassword(password) {
       this.password = password;
+    },
+    formSubmitHandler() {
+        console.log('fire api')
     }
   },
   computed: {
@@ -47,11 +63,14 @@ export default {
       let validationCount = Object.values(this.validationRules).filter(Boolean).length;
       return validationCount > 4 ? "strong" : "weak";
     },
+    validationFormSubmit() {
+      return !Object.values(this.validationRules).every(rule => rule)
+    }
   },
 };
 </script>
 <style lang="sass" scoped>
-  .form-l
+  .form
     max-width: 300px
     border-radius: 10px
     box-shadow: 0 0 5px rgba(107,119,140,.4)
@@ -65,6 +84,7 @@ export default {
     flex-direction: column
     justify-content: center
     align-items: center
+
 
 
 </style>
