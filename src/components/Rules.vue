@@ -16,6 +16,7 @@ export const RULE = {
 };
 
 export default {
+  name: 'Rules',
   computed: {
     rulesLabels() {
       return {
